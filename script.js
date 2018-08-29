@@ -1,8 +1,8 @@
 /*  Exercise 01_11_01
 
     Whole Spectrum Energy Solutions
-    Author: 
-    Date:   
+    Author: Mario Sandoval
+    Date:  08/28/2018 
 
     Filename: script.js
 */
@@ -10,9 +10,11 @@
 "use strict";
 
 // global variables
-var selectedCity = "Tucson, AZ";
-var weatherReport;
+var selectedCity = "Tucson, AZ"; // default locations
+var weatherReport = null;
 
+// get the weather in response too the click events on the city locations
+// and for default city on page load
 function getWeather(evt) {
    var latitude;
    var longitude;
@@ -34,8 +36,10 @@ function getWeather(evt) {
       longitude = -73.7120832;
    }
 }
-
+//retrieve li elements holding city location choices
 var locations = document.querySelectorAll("section ul li");
+// add click event listeners too all city location elements
+// event handler will be getWeather
 for (var i = 0; i < locations.length; i++) {
    if (locations[i].addEventListener) {
       locations[i].addEventListener("click", getWeather, false);
@@ -43,6 +47,8 @@ for (var i = 0; i < locations.length; i++) {
       locations[i].attachEvent("onclick", getWeather);
    }
 }
+// add load event listener to get wather for 
+// default location event handler getweather  
 if (window.addEventListener) {
    window.addEventListener("load", getWeather, false);
 } else if (window.attachEvent) {
